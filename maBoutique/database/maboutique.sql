@@ -50,7 +50,6 @@ CREATE TABLE categories (
 
 CREATE TABLE produits (
     id_produit BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    id_vendeur BIGINT UNSIGNED NOT NULL,
     id_categorie BIGINT UNSIGNED NULL,
     nom VARCHAR(100) NOT NULL,
     description TEXT NULL,
@@ -75,4 +74,17 @@ CREATE TABLE boutiques_produits(
         REFERENCES boutiques(id_boutique) ON DELETE CASCADE,
     CONSTRAINT fk_produit_boutique FOREIGN KEY (id_produit)
         REFERENCES produits(id_produit) ON DELETE CASCADE
+);
+
+CREATE TABLE produit_vendeur(
+    id_produit_vendeur BIGINT UNSIGNED NOT NULL,
+    id_vendeur BIGINT UNSIGNED NOT NULL,
+    id_produit BIGINT UNSIGNED NOT NULL,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT pk_produit_vendeur PRIMARY KEY (id_produit, id_vendeur),
+    CONSTRAINT fk_produit_vendeur FOREIGN KEY (id_produit)
+        REFERENCES produits(id_produit) ON DELETE CASCADE,
+    CONSTRAINT fk_vendeur_produit FOREIGN KEY (id_vendeur)
+        REFERENCES utilisateurs(id_utilisateur) ON DELETE CASCADE
 );
