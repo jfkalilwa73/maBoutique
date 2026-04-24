@@ -58,6 +58,13 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        'auth_api' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/auth_api.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ],
+
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
