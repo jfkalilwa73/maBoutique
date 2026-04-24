@@ -8,18 +8,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-vendor
 dist
 dist-ssr
 *.local
-
-.env
-.env.*
-!.env.example
-
-# Résidus Laravel (ne pas versionner dans le front)
-/bootstrap
-/storage
 
 # Editor directories and files
 .vscode/*
